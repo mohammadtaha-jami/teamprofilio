@@ -371,15 +371,16 @@
   .contact-mini-list a strong{ color: var(--text); display:block; font-size:0.85rem; }
 
   /* team member strip */
-  .team-strip{ display:flex; gap:14px; margin-top: 30px; flex-wrap:wrap; }
+  .team-strip{ display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; margin-top: 30px; }
   .team-avatar{
     display:flex; align-items:center; gap:10px;
     background: var(--panel-2); border:1px solid var(--border);
     padding: 8px 16px 8px 8px; border-radius: var(--radius-pill);
+    min-width:0;
   }
-  .team-avatar img{ width:34px; height:34px; border-radius:50%; object-fit:cover; }
-  .team-avatar span{ font-size:0.85rem; font-weight:500; }
-  .team-avatar small{ display:block; color: var(--text-faint); font-size:0.72rem; font-weight:400; }
+  .team-avatar img{ width:34px; height:34px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+  .team-avatar span{ font-size:0.85rem; font-weight:500; min-width:0; overflow:hidden; }
+  .team-avatar small{ display:block; color: var(--text-faint); font-size:0.72rem; font-weight:400; white-space:normal; }
 
   /* ---------- SERVICES ---------- */
   .accordion{ max-width: 780px; margin: 0 auto; }
@@ -711,6 +712,13 @@
     padding: 16px 6px; border-bottom:1px solid var(--border); font-weight:500;
   }
   .mobile-nav .close-btn{ align-self:flex-end; font-size:1.4rem; margin-bottom:10px; }
+  .mobile-nav #mobileNavContactBtn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin-top:16px; padding:14px 26px; border:none; border-bottom:none;
+    border-radius: var(--radius-pill); font-weight:600;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-3) 100%);
+    color:#f5f9ff;
+  }
   .overlay{
     position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:998;
     opacity:0; pointer-events:none; transition: opacity .3s ease;
@@ -738,7 +746,6 @@
         <i class="ri-moon-line"></i>
         <i class="ri-sun-line"></i>
       </button>
-      <a href="#contact" class="btn btn-primary magnetic" id="navContactBtn" data-i18n="nav_start">Start a project <i class="ri-arrow-right-line"></i></a>
       <button class="burger" id="burgerBtn" aria-label="Open menu"><i class="ri-menu-3-line"></i></button>
     </div>
   </nav>
@@ -754,6 +761,7 @@
   <a href="#skills" class="mobile-link" data-i18n="nav_stack">Tech Stack</a>
   <a href="#testimonials" class="mobile-link" data-i18n="mobile_reviews">Reviews</a>
   <a href="#contact" class="mobile-link" data-i18n="mobile_contact">Contact</a>
+  <a href="#contact" class="mobile-link btn-primary magnetic" id="mobileNavContactBtn" data-i18n="nav_start">Start a project <i class="ri-arrow-right-line"></i></a>
 </aside>
 
 <main>
@@ -830,9 +838,10 @@
           <div><strong>9.2</strong><span data-i18n="stat_rating">Average client rating</span></div>
         </div>
         <div class="team-strip">
-          <div class="team-avatar"><img src="assests/img/team/taha.png" alt="Team member"><span>MohammadTaha<small data-i18n="role_lead">full-stack developer</small></span></div>
+          <div class="team-avatar"><img src="assests/img/team/sajad.png" alt="Team member"><span>sajad<small data-i18n="role_lead">sales manager </small></span></div>
           <div class="team-avatar"><img src="assests/img/team/mohsen.jpg" alt="Team member"><span>Mohsen<small data-i18n="role_ai">strategist and analyst</small></span></div>
           <div class="team-avatar"><img src="assests/img/team/ali.jpg" alt="Team member"><span>Ali<small data-i18n="role_python">Frontend Developer</small></span></div>
+          <div class="team-avatar"><img src="assests/img/team/mostafa.png" alt="Team member"><span>Mostafa<small data-i18n="role_mostafa">Backend Developer</small></span></div>
         </div>
       </div>
       <div class="about-card reveal" data-sr>
@@ -1374,9 +1383,10 @@
     stat_engineers:     { en: 'Engineers on the team', fa: 'مهندس در تیم' },
     stat_projects:      { en: 'Projects delivered', fa: 'پروژه تحویل‌شده' },
     stat_rating:       { en: 'Average client rating', fa: 'میانگین رضایت مشتری' },
-    role_lead:        { en: 'full-stack developer', fa: 'برنامه نویس ارشد' },
+    role_lead:        { en: 'sales manager', fa: 'مدیر فروش' },
     role_ai:         { en: 'strategy and planning', fa: 'استراتژی و برنامه ریزی ' },
     role_python:       { en: 'web development', fa: 'طراح سایت' },
+    role_mostafa:      { en: 'Founder & CEO', fa: 'بنیانگذار و مدیر عامل' },
     about_card_p:      { en: 'If you have a project in mind, check out our case studies and get in touch — we\'ll scope it together and start building.', fa: 'اگر پروژه‌ای در ذهن دارید، نمونه‌کارهای ما را ببینید و با ما تماس بگیرید — با هم دامنه کار را مشخص می‌کنیم و شروع می‌کنیم.' },
     contact_team_btn:    { en: 'Contact the team <i class="ri-arrow-right-line"></i>', fa: 'تماس با تیم <i class="ri-arrow-right-line"></i>' },
     label_email:       { en: 'Email', fa: 'ایمیل' },
